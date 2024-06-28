@@ -50,11 +50,13 @@
       </div>
     <% end %>
 
-    <% if alert.present? %>
-      <div class="alert alert-danger" role="alert">
-        <%= alert %>
-      </div>
-    <% end %>
+    <div class="container">
+      <% if alert.present? %>
+        <div class="alert alert-danger" role="alert">
+          <%= alert %>
+        </div>
+      <% end %>
+    </div>  
     
     <%= yield %>
   </body>

@@ -10,32 +10,13 @@
     <%= javascript_importmap_tags %>
     <meta charset="utf-8">
 
-    <!-- Make it responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Connect Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-    <!-- Connect Bootstrap JavaScript and its dependencies -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Connect Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+    <%= render partial: "shared/cdn_assets" %>
   </head>
 
   <body>
-    
     <%= render partial: "shared/navbar"%>
-
     <div class="container mt-3">
-      <% if notice.present? %>
-        <div class="alert alert-success" role="alert">
-          <%= notice %>
-        </div>
-      <% end %>
-      <% if alert.present? %>
-        <div class="alert alert-danger" role="alert">
-          <%= alert %>
-        </div>
-      <% end %>
-      
+      <%= render partial: "shared/flash_messages" %>
       <%= yield %>
     </div>  
   </body>

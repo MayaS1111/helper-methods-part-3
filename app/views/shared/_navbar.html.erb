@@ -11,11 +11,17 @@
           <%= link_to "Movies", movies_path, class: "nav-link active" %>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
+          <%= link_to "Edit profile", edit_user_registration_path(current_user), class: "nav-link" %>
         </li>
-        <%# <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li> %>
+        <li class="nav-item">
+          <%= link_to "Sign out", destroy_user_session_path, class: "nav-link", data: { turbo_method: :delete } %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Log in", new_user_session_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-link" %>
+        </li>
       </ul>
     </div>
   </div>

@@ -11,4 +11,9 @@
 #
 class Movie < ApplicationRecord
   validates :title, presence: true
+
+  private
+  def movie_params
+    params.require(:movie).permit(:title, :description, :image_url)
+  end
 end

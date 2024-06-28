@@ -1,23 +1,10 @@
-<div>
-  <div>
-    <h1>
-      Movie #<%= @movie.id %> details
-    </h1>
 
-    <div>
-      <div>
-        <%= link_to "Go back", movies_path %>
-      </div>
+<div class="card">
+  <div class="card-header">
+    <%= link_to "Movie ##{@movie.id}", @movie %>
+  </div>
 
-      <div>
-        <%= link_to "Edit Movie", edit_movie_path(@movie) %>
-      </div>
-
-      <div>
-        <%= link_to "Delete Movie", @movie, data: { turbo_method: :delete } %>
-      </div>
-    </div>
-
+  <div class="card-body">
     <dl>
       <dt>
         Title
@@ -32,27 +19,27 @@
       <dd>
         <%= @movie.description %>
       </dd>
-
-      <dt>
-        Image
-      </dt>
-      <dd>
-        <img src="<%= @movie.image_url %>" >
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@movie.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@movie.updated_at) %> ago
-      </dd>
     </dl>
+
+    <div class="row">
+      <div class="col">
+        <div class="d-grid">
+          <%= link_to edit_movie_path(@movie), class: "btn btn-outline-secondary" do %>
+            <i class="fa-regular fa-pen-to-square"></i>
+          <% end %>
+        </div>
+      </div>
+      <div class="col">
+        <div class="d-grid">
+          <%= link_to @movie, data: { turbo_method: :delete }, class: "btn btn-outline-secondary" do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    Last updated <%= time_ago_in_words(@movie.updated_at) %> ago
   </div>
 </div>

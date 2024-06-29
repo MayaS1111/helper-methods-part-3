@@ -1,51 +1,6 @@
-<div>
-  <div>
-    <h1>
-      Movie #<%= @movie.id %> details
-    </h1>
 
-    <div>
-      <div>
-        <%= link_to "Go back", movies_path %>
-      </div>
-
-      <div>
-        <%= link_to "Edit Movie", edit_movie_path(@movie) %>
-      </div>
-
-      <div>
-        <%= link_to "Delete Movie", @movie, data: { turbo_method: :delete } %>
-      </div>
-    </div>
-
-    <dl>
-      <dt>
-        Title
-      </dt>
-      <dd>
-        <%= @movie.title %>
-      </dd>
-
-      <dt>
-        Description
-      </dt>
-      <dd>
-        <%= @movie.description %>
-      </dd>
-
-      <dt>
-        Created at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@movie.created_at) %> ago
-      </dd>
-
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@movie.updated_at) %> ago
-      </dd>
-    </dl>
-  </div>
-</div>
+<div class="row flex-grow-1">
+  <div class="col-md-8 offset-md-2"> 
+    <%= render partial: "movies/movie", locals: { movie: @movie } %>
+  </div> 
+</div> 

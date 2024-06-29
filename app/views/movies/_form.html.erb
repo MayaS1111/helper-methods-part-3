@@ -1,0 +1,30 @@
+
+<% movie.errors.full_messages.each do |message| %>
+  <p style="color: red;"><%= message %></p>
+<% end %>
+
+<%= form_with(model: movie, data: { turbo: :false }) do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :image_url %>
+    <%= form.text_field :image_url %>
+  </div>
+
+  <div>
+    <%= form.label :released_on %>
+    <%= form.date_select :released_on %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

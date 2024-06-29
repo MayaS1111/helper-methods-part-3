@@ -1,7 +1,23 @@
+databases:
+  - name: helper_methods_3
+    databaseName: helper_methods_3
+    user: helper_methods_3
+    plan: free
+
 services:
   - type: web
-    name: movieinfo # the name of this service, eg hello-world
-    env: ruby # this app is written in ruby
-    plan: free # make sure to set this to free or you'll get billed $$$
-    buildCommand: "./bin/render-build.sh" # we already created these two files for you
-    startCommand: "./bin/render-start.sh" 
+    name: movieinfo
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "bundle exec rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mysite
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2 # sensible default
